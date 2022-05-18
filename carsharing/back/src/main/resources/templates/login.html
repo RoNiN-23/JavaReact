@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link media="all" rel="stylesheet" th:href="@{/css/login.css}" type="text/css"/>
+</head>
+<body>
+
+<img th:src="@{/images/main3.jpg}" alt="">
+<div class="login-page">
+    <p class="signin">SIGN IN FORM</p>
+    <form class="login-form" th:action="@{/login}" method="post" autocomplete="off">
+        <input type="text" placeholder="username" name="username" required/>
+        <input type="password" placeholder="password" name="password" required/>
+        <button type="submit">login</button>
+    </form>
+    <p class="message">Not registered? <a th:href="@{/registration}">Create an account</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link media="all" rel="stylesheet" th:href="@{/css/tariffs.css}" type="text/css"/>
+    <link media="all" rel="stylesheet" th:href="@{/css/profile_header.css}" type="text/css"/>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="header_body">
+                <a th:href="@{/}" class="header_logo">
+
+                </a>
+                <div class="header_burger">
+                    <span></span>
+                </div>
+                <nav class="header_menu">
+                    <ul class="header_list">
+                        <li>
+                            <a th:href="@{/}" class="header_link">HOME</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/about}" class="header_link">ABOUT&nbsp;US</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/reserve}" class="header_link">TARIFFS</a>
+                        </li>
+                        <li th:if="${user == 'anonymous'}">
+                            <a th:href="@{/login}" class="header_link">SIGN&nbsp;IN</a>
+                        </li>
+                        <li th:if="${user != 'anonymous'}">
+                            <form th:action="@{/logout}" method="post">
+                                <input type="submit" value="logout">
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <img th:src="@{/images/main3.jpg}" alt="" class="main_img">
+
+    <div class="tariffs">
+        <h1>TARIFFS</h1>
+        <hr>
+        <div class="economy carType">
+            <h2>ECONOMY</h2>
+            <div class="kia car">
+                <dic class="kia_img"><img th:src="@{/images/KiaBig.jpg}"></dic>
+                <div class="kia_desc">
+                    <h3>Kia Rio X-Line</h3>
+                    <p>New urban cross-hatchback. Modern design, increased ground clearance, roomy trunk.</p>
+                    <p>5 &#8381;/min</p>
+                    <a th:href="@{/reserved?mark=kia}">Let's go!</a>
+                </div>
+            </div>
+            <div class="volk car">
+                <dic class="volk_img"><img th:src="@{/images/VolkBig.jpg}"></dic>
+                <div class="volk_desc">
+                    <h3>Volkswagen Polo</h3>
+                    <p>A dynamic and easy-to-drive sedan. Ergonomic interior, support for CarPlay and Android Auto.</p>
+                    <p>5 &#8381;/min</p>
+                    <a th:href="@{/reserved?mark=volkswagen}">Let's go!</a>
+                </div>
+            </div>
+            <div class="renault car">
+                <dic class="renault_img"><img th:src="@{/images/RenaultBig.jpg}"></dic>
+                <div class="renault_desc">
+                    <h3>Renault Arkana</h3>
+                    <p>The latest comfort-class crossover, suitable for both city and country trips.</p>
+                    <p>5 &#8381;/min</p>
+                    <a th:href="@{/reserved?mark=renault}">Let's go!</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="premium carType">
+            <h2>PREMIUM</h2>
+            <div class="merceCLA car">
+                <dic class="merceCLA_img"><img th:src="@{/images/MerceCLABig.jpg}"></dic>
+                <div class="merceCLA_desc">
+                    <h3>Mercedes-Benz CLA</h3>
+                    <p>New urban cross-hatchback. Modern design, increased ground clearance, roomy trunk.</p>
+                    <p>10 &#8381;/min</p>
+                    <a th:href="@{/reserved?mark=mercedesCLA}">Let's go!</a>
+                </div>
+            </div>
+            <div class="merceGLA car">
+                <dic class="merceGLA_img"><img th:src="@{/images/MerceGLABig.jpg}"></dic>
+                <div class="merceGLA_desc">
+                    <h3>Mercedes-Benz GLA</h3>
+                    <p>A dynamic and easy-to-drive sedan. Ergonomic interior, support for CarPlay and Android Auto.</p>
+                    <p>10 &#8381;/min</p>
+                    <a th:href="@{/reserved?mark=mercedesGLA}">Let's go!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{https://code.jquery.com./jquery-3.4.1.slim.min.js}"></script>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>

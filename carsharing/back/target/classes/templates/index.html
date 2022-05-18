@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link media="all" rel="stylesheet" th:href="@{/css/header.css}" type="text/css"/>
+    <link media="all" rel="stylesheet" th:href="@{/css/index.css}" type="text/css"/>
+</head>
+<body>
+
+<div class="wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="header_body">
+                <a th:href="@{/}" class="header_logo">
+
+                </a>
+                <div class="header_burger">
+                    <span></span>
+                </div>
+                <nav class="header_menu">
+                    <ul class="header_list">
+                        <li>
+                            <a th:href="@{/about}" class="header_link">ABOUT&nbsp;US</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/reserve}" class="header_link">TARIFFS</a>
+                        </li>
+                        <li th:if="${user == 'anonymous'}">
+                            <a th:href="@{/registration}" class="header_link">REGISTRATION</a>
+                        </li>
+                        <li>
+                            <a th:if="${user == 'anonymous'}" th:href="@{/login}" class="header_link">SIGN&nbsp;IN</a>
+                            <a th:if="${user != 'anonymous'}" th:text="${user}" class="header_link" th:href="@{/user}"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="first">
+        <img th:src="@{/images/main3.jpg}">
+        <p>CYBER DRIVE</p>
+    </div>
+</div>
+    <script th:src="@{https://code.jquery.com./jquery-3.4.1.slim.min.js}"></script>
+    <script th:src="@{/js/header.js}"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link media="all" rel="stylesheet" th:href="@{/css/profile.css}" type="text/css"/>
+    <link media="all" rel="stylesheet" th:href="@{/css/profile_header.css}" type="text/css"/>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <div class="container">
+            <div class="header_body">
+                <a th:href="@{/}" class="header_logo">
+
+                </a>
+                <div class="header_burger">
+                    <span></span>
+                </div>
+                <nav class="header_menu">
+                    <ul class="header_list">
+                        <li>
+                            <a th:href="@{/}" class="header_link">HOME</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/about}" class="header_link">ABOUT&nbsp;US</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/reserve}" class="header_link">TARIFFS</a>
+                        </li>
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <input type="submit" value="logout">
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <img th:src="@{/images/main3.jpg}" alt="">
+
+    <div class="profile">
+        <h1>PERSONAL ACCOUNT</h1>
+        <hr>
+        <div class="data">
+            <div class="main_data">
+                <img th:src="@{/images/profile.png}">
+                <p th:text="${user.getUsername}"></p>
+            </div>
+            <div class="extra_data">
+                <span class="info">user information</span>
+                <p th:text="'Email: ' + ${user.getEmail()}"></p>
+                <p th:text="'Phone number: ' + ${user.getPhone()}"></p>
+                <p th:text="'Balance: ' + ${user.getWallet()} + ' руб.'"></p>
+                <p th:if="${user.getCarId() != null}">
+            <span th:text="'Текущая аренда: ' + ${car.getMark()} + ' ' +
+            ${car.getNumber()} + ' '"></span>
+                    <a th:href="@{/unreserve}">Вернуть автомобиль</a>
+                </p>
+            </div>
+        </div>
+        <h2 class="historyh1">History</h2>
+        <div class="history">
+            <table>
+                <tbody>
+                <tr th:if="${orders.empty}">
+                    <td colspan="2"> Вы не сделали ещё ни одного заказа</td>
+                </tr>
+                <tr class="firstTR" th:if="${!orders.empty}">
+                    <td><p>Марка автомобиля</p></td>
+                    <td><p>Номер автомобиля</p></td>
+                    <td><p>Дата начала аренды</p></td>
+                    <td><p>Дата конца аренды</p></td>
+                    <td><p>Стоимость аренды (руб.)</p></td>
+                </tr>
+                <tr th:each="order : ${orders}">
+                    <td><p th:if="${order.getEndDataAndTime() != null}" th:text="${order.getCarMark()}"></p></td>
+                    <td><p th:if="${order.getEndDataAndTime() != null}" th:text="${order.getCarNumber()}"></p></td>
+                    <td><p th:if="${order.getEndDataAndTime() != null}" th:text="${order.getStartDataAndTime()}"></p>
+                    </td>
+                    <td><p th:if="${order.getEndDataAndTime() != null}" th:text="${order.getEndDataAndTime()}"></p></td>
+                    <td><p th:if="${order.getEndDataAndTime() != null}" th:text="${order.getPrice()}"></p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script th:src="@{https://code.jquery.com./jquery-3.4.1.slim.min.js}"></script>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>
